@@ -1,0 +1,249 @@
+:root {
+  --primary-color: #792200d2; 
+  --secondary-color: #f6fa99; /* Faded Yellow */
+  --text-color: #2C3E50; /* Dark Gray */
+  --success-color: #9e2e02d2; 
+  --warm-color: #ce3d04d2; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", serif;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  background-image: url('bookshelf.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#transit {
+  font-family: "Sigmar", serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.search-container {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#search {
+  flex-grow: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 4px solid var(--secondary-color);
+  border-radius: 5px 0 0 5px;
+}
+
+#search-btn {
+  padding: 12px 20px;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#search-btn svg{
+  stroke:#792200;
+}
+
+#search-btn:hover {
+  background-color: #fbd67f;
+}
+
+#random-book, #results-section {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.random-book-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.random-book-content img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.book-details {
+  flex-grow: 1;
+}
+
+.book-details h5 {
+  color: white;
+}
+
+.book-details p {
+  color: #EAECEE; /* Light Gray for better readability on dark blue */
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  max-width: 150px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.book-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.book-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.book-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.button.read-more {
+  background-color: var(--primary-color);
+}
+
+.button.read-more:hover {
+  background-color: var(--secondary-color); 
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.button.read-pdf {
+  background-color: var(--success-color);
+}
+
+.button.read-pdf:hover {
+  background-color: var(--secondary-color);
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.button.buy-book {
+  background-color: var(--warm-color);
+}
+
+.button.buy-book:hover {
+  background-color: var(--secondary-color);
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.creator {
+  text-align: center;
+  background-color: var(--secondary-color);
+  color: #172763e6;
+}
+
+.creator-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.creator-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #172763e6;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+  color: indigo
+}
+
+footer {
+  text-align: center;
+  background-color: var(--secondary-color);
+  color: #172763e6;
+}
