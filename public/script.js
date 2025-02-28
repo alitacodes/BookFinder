@@ -102,7 +102,7 @@ async function displayRandomBook() {
         console.log(Array.isArray(b), "====================");
         const title = JSON.stringify({ book: b })
         console.log(title, "===++++++++++++");
-        const geminiResponse = await fetch("/ai", {
+        const geminiResponse = await fetch("https://bookfinder-36aa.onrender.com/ai", {
             method: 'POST', // Specify the request method
             headers: {
                 'Content-Type': 'application/json' // Set headers (adjust as needed)
