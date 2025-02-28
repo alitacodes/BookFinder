@@ -9,7 +9,7 @@ async function searchBooks() {
         alert("Please enter a book name to search.");
         return;
     }
-    
+
     localStorage.setItem("bookList", JSON.stringify([query]))
 
     // const a = localStorage.getItem("bookList")
@@ -84,13 +84,15 @@ async function displayRandomBook() {
             <p>Finding a book for you...</p>
         </div>
     `;
-    const bookList = localStorage.getItem("bookList")   ////////////////////////////
-    if(!bookList){
+    let bookList
+    bookList = localStorage.getItem("bookList")   ////////////////////////////
+    if (!bookList) {
         const list = ["atomic habit"];
 
         localStorage.setItem("bookList", JSON.stringify(list));
+        bookList = localStorage.getItem("bookList");
     }
-    
+
     // const a = localStorage.getItem("bookList")
     // console.log(a, "====================");
 
@@ -98,16 +100,16 @@ async function displayRandomBook() {
         const [b] = JSON.parse(bookList);
         console.log(b, "====================");
         console.log(Array.isArray(b), "====================");
-        const title = JSON.stringify({book: b})
+        const title = JSON.stringify({ book: b })
         console.log(title, "===++++++++++++");
-       const geminiResponse = await fetch("/ai" , {
+        const geminiResponse = await fetch("/ai", {
             method: 'POST', // Specify the request method
             headers: {
                 'Content-Type': 'application/json' // Set headers (adjust as needed)
             },
             body: title // Convert data to JSON format
         })
-        
+
         const data = await geminiResponse.json();
         console.log(data.response)
         randomBook = data.response;
