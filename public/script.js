@@ -100,7 +100,7 @@ async function displayRandomBook() {
         console.log(Array.isArray(b), "====================");
         const title = JSON.stringify({book: b})
         console.log(title, "===++++++++++++");
-       const geminiResponse = await fetch('/ai', {
+       const geminiResponse = await fetch("https://bookfinder1010.vercel.app/ai" , {
             method: 'POST', // Specify the request method
             headers: {
                 'Content-Type': 'application/json' // Set headers (adjust as needed)
