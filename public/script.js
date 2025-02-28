@@ -2,12 +2,18 @@ const API_KEY = "AIzaSyBhBqi0Gj6aKHuqI_e5lJVBL3ko28KRcYA";
 const RANDOM_BOOK_QUERY = "classic literature";
 
 async function searchBooks() {
+    const [bookList] = localStorage.getItem("bookList")
+
     const query = document.getElementById("search").value;
     if (!query) {
         alert("Please enter a book name to search.");
         return;
     }
+    
+    localStorage.setItem("bookList", JSON.stringify([query]))
 
+    // const a = localStorage.getItem("bookList")
+    // console.log(a, "====================");
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
         <div class="loading">
@@ -71,16 +77,47 @@ function createBookCard(book) {
 }
 
 async function displayRandomBook() {
+    let randomBook;
     const randomBookDiv = document.getElementById("about-random-book");
     randomBookDiv.innerHTML = `
         <div class="loading">
             <p>Finding a book for you...</p>
         </div>
     `;
+    const bookList = localStorage.getItem("bookList")   ////////////////////////////
+    if(!bookList){
+        const list = ["atomic habit"];
+
+        localStorage.setItem("bookList", JSON.stringify(list));
+    }
+    
+    // const a = localStorage.getItem("bookList")
+    // console.log(a, "====================");
 
     try {
+        const [b] = JSON.parse(bookList);
+        console.log(b, "====================");
+        console.log(Array.isArray(b), "====================");
+        const title = JSON.stringify({book: b})
+        console.log(title, "===++++++++++++");
+       const geminiResponse = await fetch('/ai', {
+            method: 'POST', // Specify the request method
+            headers: {
+                'Content-Type': 'application/json' // Set headers (adjust as needed)
+            },
+            body: title // Convert data to JSON format
+        })
+        
+        const data = await geminiResponse.json();
+        console.log(data.response)
+        randomBook = data.response;
+    } catch (error) {
+        console.log(error)
+    }
+    try {
+
         const response = await fetch(
-            `https://www.googleapis.com/books/v1/volumes?q=${RANDOM_BOOK_QUERY}&key=${API_KEY}`
+            `https://www.googleapis.com/books/v1/volumes?q=${randomBook}&key=${API_KEY}`
         );
         const data = await response.json();
 
